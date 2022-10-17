@@ -1,0 +1,18 @@
+start: build
+
+yacc:
+	yacc -d cv.y
+
+flex:
+	flex cv.l
+
+build b: yacc flex
+	gcc -o cv y.tab.c lex.yy.c
+
+clean:
+	rm *.c
+	rm *.h
+
+run: build
+	./cv
+
